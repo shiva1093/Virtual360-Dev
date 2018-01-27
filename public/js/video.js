@@ -1,4 +1,6 @@
 // play video when user enters room. Pause when leaving
+var path = require('path');
+
 const splash = document.querySelector('.splash');
 const video = document.getElementById('theaterVideo');
 if(localStorage.getItem("rome") == "rome")
