@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Rome</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/anime.css">
+    <link rel="stylesheet" href="js/Remodal-1.1.1/dist/remodal.css">
+    <link rel="stylesheet" href="js/Remodal-1.1.1/dist/remodal-default-theme.css">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+    <script src="js/build.js"></script>
+    <script src="js/aframe-animation-component.min.js"></script>
+    <script src="js/speech.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<div id="splash">
+    <div class="floading"></div>
+</div>
+<a-scene>
+
+    <!--<a-entity anim_1></a-entity>
+    <a-entity anim_2></a-entity> -->
+    <a-assets>
+       <video id="video" src="./videos/Colosseum_Rome.mp4" autoplay loop crossorigin="anonymous"></video>
+
+         </a-assets>
+    <!-- User / Camera -->
+    <!-- Camera + cursor. -->
+
+    <a-entity id="annyang" annyang-speech-recognition></a-entity>
+    <a-entity id ='target'
+              universal-controls
+              listener  rotation="0 470 0"
+              animation__1="delay: 0; dir: normal; dur: 2000; easing: easeInOutQuad; elasticity: 400; loop: 0; property: position; startEvents: green-clicked; to: 1.3 5.8 -0.2; "
+              teleporter="character: #character; marker: #teleportMarker"
+              speech-command__start="command: start; type: function; targetElement: #target; targetComponent: teleporter; function: start; keyCode: 32"
+              speech-command__stop="command: stop; type: function; targetElement: #target; targetComponent: teleporter; function: stop; keyCode: 13"
+              speech-command__home="command: go home; type: function; targetElement: #target; targetComponent: teleporter; function: home; keyCode: 26"
+
+    >
+                <!-- wasd-controls -->
+       <!-- <a-cursor id="cursor"
+                  animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+                  animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+                  event-set__1="_event: mouseenter; color: springgreen"
+                  event-set__2="_event: mouseleave; color: black"
+                  fuse="true"
+                  raycaster="objects: .link"></a-cursor>-->
+        <a-camera id="main-camera" user-height="0" visible="true"
+                  cursor="rayOrigin: mouse;" raycaster="objects: .clickable">
+        <a-cursor id="fuse-cursor" fuse="true" geometry="radiusInner: 0.02; radiusOuter: 0.03; thetaLength: 360; thetaStart: 90;"
+                  color="#232323" opacity="1" repeat="1 1" shader="flat" position="0 0 -1" objects=".clickable"
+                  rotation="0 0 0" scale="1 1 1" visible="true"></a-cursor>
+
+        <a-ring id="fuse-progress" radius-inner="0.02" radius-outer="0.03" theta-length="360"
+                theta-start="90" color="#f5fcff" opacity="0" repeat="1 1" shader="flat" position="0 0 -0.999"
+                rotation="0 0 0" scale="1 1 1" visible="true" class="clickable" animation="delay: 0; dir: normal; dur: 1500; easing: linear; loop: 0; property: geometry.thetaLength; startEvents: fusing; to: 0; from: 360;"
+                animation__1="delay: 0; dir: normal; dur: 500; easing: linear; loop: 0; property: opacity; startEvents: fusing; to: 1; from: 0;"></a-ring>
+            <a-entity  geometry="primitive: plane; radius: 1000"
+                       material="side: double; color: #EF2D5E; transparent: true; opacity: 0.2"
+                       position="-1 -0.3 -1" >
+            <a-entity text="value: Say 'START' to start the video; color: white; width: 2.5;" position="-1.3 -0.3 -1.5" ></a-entity>
+                <a-entity text="value: Say 'STOP' to stop the video; color: white; width: 2.5;" position="-1.3 -0.5 -1.5" >
+            </a-entity>
+            <a-entity text="value: Say 'GO HOME' to go back to the Homepage; white: blue; width: 2.5;" position="-1.3 -0.7 -1.5" >
+            </a-entity>
+            </a-entity>
+            </a-camera>
+    </a-entity>
+
+    <!-- "button"
+    <a-button position="-5 3 2" name="stuff" button-color="#9c9c9c" value="Click me" type="raised"></a-button>-->
+         <a-videosphere id="rome" src="#video"></a-videosphere>
+     <!-- <a-sky src="rom.png"></a-sky> position="-2.80 3.90 8.70"
+
+    <a-sphere id="green" radius="1" color="#6fd2f5" metalness="0.03" opacity="1"
+              repeat="1 1" roughness="0.15" shader="standard" side="double" position="-5 3 2"
+              rotation="-21.78 -518.79 0.00" scale="0.25 0.25 0.25" visible="true" class="clickable"
+              animation="delay: 0; dir: alternate; dur: 2000; easing: linear; elasticity: 400; loop: true; property: scale; to: 0.2 0.2 0.2; ">
+
+    </a-sphere> -->
+
+    <a-text id="text"  rotation="0 470 0"
+            scale="1 1 1" align="center" anchor="center" color="#0d0d0d"
+            height="0" letter-spacing="0" line-height="77.00" opacity="0.5" side="double" value="Welcome!! All roads lead to Rome, right?" width="4.80" wrap-count="36" visible="true" animation="delay: 0; dir: normal; dur: 8000; easing: linear; elasticity: 400; loop: 0; property: text.opacity; to: 0; "
+            animation__1="delay: 0; dir: normal; dur: 10000; easing: linear; elasticity: 400; loop: 0; property: position; to: -17 5 6; "></a-text>
+    <!--<div class="ml11" style="z-index: 1;position: absolute">
+  <span class="text-wrapper">
+    <span class="line line1"></span>
+    <span  class="letters">dfgdfg</span>
+  </span>
+    </div>-->
+    <div data-remodal-id="modal">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <h1>About Rome</h1>
+        <p class="letters">
+        </p>
+    </div>
+</a-scene>
+
+<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script src="js/anime.js"></script>
+<script src="js/Remodal-1.1.1/dist/remodal.min.js"></script>
+ </body>
+ </html>

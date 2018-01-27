@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="main.css">
+  <title>360 Degree Virtual Tour Guide</title>
+  <meta name="description" content="Now in 3D!">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.6.0/aframe-master.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+
+</head>
+<body id="index">
+
+  <a-scene fog="type: linear; color: #000; far: 16; near: 7">
+
+    <!-- Splash Screen -->
+    <div class="splash">
+      <div class="splash__card">
+        <h1>360 degree Virtual Tour Guide</h1>
+        <p>You can move around with WASD keys (desktop), by tapping the screen (mobile) or with the button on your Google Cardboard.</p>
+        <img class="splash__img" src="img/other/whoa.jpg" alt="whoa" />
+        <button class="splash__button">Enter</button>
+      </div>
+    </div>
+
+    <!-- Load Assets -->
+    <a-assets>
+      <!-- global -->
+      <img id="floor" src="img/other/wall-image.jpg">
+      <img id="wall" src="img/other/wall-c.jpg">
+      <img id="wall-secret" src="img/other/wall-concrete-secret.jpg">
+      <img id="wall-brick" src="img/other/brick.jpg">
+
+      <!-- team -->
+      <img id="team-poster" src="img/team/poster.jpg">
+      <img id="team-logo" src="img/team/logos.jpg">
+
+
+      <!-- Example Room 2-->
+      <img id="room-sign-1" src="img/other/itally-1.jpg">
+      <img id="room-sign-2" src="img/other/italy.jpg">
+      <img id="italy-rome1" src="img/italy/rome.jpg">
+      <img id="italy-rome2" src="img/italy/colosseum-photoshop.jpg">
+      <img id="italy-rome3" src="img/italy/Trevi-Fountain.jpg">
+      <img id="italy-rome4" src="img/italy/saint-peters-basailica.jpg">
+      <img id="italy-venice1" src="img/italy/Rialto-Bridge.jpg">
+      <img id="italy-venice2" src="img/italy/ven.jpg">
+      <img id="italy-venice3" src="img/italy/venice.jpg">
+      <img id="italy-venice4" src="img/italy/Piazza-san-marco.jpg">
+      <img id="italy-wire1" src="img/italy/wire-1.png">
+      <img id="italy-wire2" src="img/italy/wire-2.png">
+      <img id="italy-wire3" src="img/italy/wire-3.png">
+      <img id="italy-wire4" src="img/italy/wire-4.png">
+      <img id="italy-rome-sign" src="img/italy/welcome-to-rome.jpg">
+      <img id="italy-venice-sign" src="img/italy/welcome-to-venice.jpg">
+      <img id="italy-wire-sign" src="img/italy/wire-sign.png">
+
+
+      <!-- Theater 6-->
+      <video id="theaterVideo" autoplay loop="true" webkit-playsinline playsinline src="img/theater/movie.mp4"></video>
+      <img id="arrow" src="img/other/Arrow-Down-Red.png">
+    </a-assets>
+
+
+    <!-- User / Camera -->
+    <a-entity
+      id="player"
+      camera="user-height: 1.6"
+      universal-controls
+      kinematic-body
+      listener
+      position = "0 9 0"
+    ></a-entity>
+
+    <!-- Start Room (spawn) -->
+    <a-entity position="-1.5 1.5 19.5" rotation="0 0 0">
+      <!--left wall -->
+      <a-entity rotation= "0 90 0">
+        <a-image position="1 1.5 -4.4" src="#team-poster" height="5" width="5"></a-image>
+      </a-entity>
+    </a-entity>
+
+    <a-entity position="7.3 1.5 19.5" rotation="0 0 0">
+      <!--left wall -->
+      <a-entity rotation= "0 90 0">
+        <a-image position="1 1.5 -4.4" src="#team-logo" height="5" width="5"></a-image>
+      </a-entity>
+    </a-entity>
+
+    <a-entity  position="-0.8 3 19.5">
+      <a-image position="-0.8 1.5 -4.4" src="#arrow" height="2" width="2"></a-image>
+      <a-animation attribute="position" direction = "alternate" from="-0.8 1.5 20" to="-0.8 5 20" dur="800" repeat="indefinite"></a-animation>
+    </a-entity>
+
+
+    <!-- Room  1(First Left) -->
+    <a-entity position="-10.5 1.5 7.5" rotation="0 90 0">
+
+            <a-circle color="#F55" radius="1" height = "1" rotation="-90 0 0" position ="0.3 -1.4 -1">
+              <a-animation attribute="scale" dur="1000" fill="forwards" from = '1 1 1' to="2 2 2" easing= 'ease-in-out-circ' repeat = 'indefinite' direction="alternate-reverse"></a-animation>
+            </a-circle>
+
+
+
+      <!-- Room Sign -->
+      <a-image position="-1.45 1 6.02" rotation="0 90 0" src="#room-sign-1" height="1.5" width="3"></a-image>
+      <a-image position="1.45 1 6.02" rotation="0 -90 0" src="#room-sign-2" height="1.5" width="3"></a-image>
+      <!-- Back wall -->
+      <a-image position="-2 0 -4.4" src="#italy-rome1" height="2.5" width="2.5"></a-image>
+      <a-image position="-2 2.4 -4.4" src="#italy-rome2" height="2.5" width="2.5"></a-image>
+      <a-image position="2 0 -4.4" src="#italy-rome3" height="2.5" width="2.5"></a-image>
+      <a-image position="2 2.4 -4.4" src="#italy-rome4" height="2.5" width="2.5"></a-image>
+      <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#italy-rome-sign" height="2.5" width="5"></a-image>
+      <!--right wall -->
+      <a-entity rotation= "0 -90 0">
+        <a-image position="-2 0 -4.4" src="#italy-venice1" height="2.5" width="2.5"></a-image>
+        <a-image position="-2 2.4 -4.4" src="#italy-venice2" height="2.5" width="2.5"></a-image>
+        <a-image position="2 0 -4.4" src="#italy-venice3" height="2.5" width="2.5"></a-image>
+        <a-image position="2 2.4 -4.4" src="#italy-venice4" height="2.5" width="2.5"></a-image>
+        <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#italy-venice-sign" height="2.5" width="5"></a-image>
+      </a-entity>
+
+    </a-entity>
+
+
+    <!-- Ground -->
+    <a-grid id="ground" static-body material="src: #floor; repeat: 15 15" rotation="0 -90 0"></a-grid>
+
+    <!-- Walls (used by map.js -->)
+    <a-entity id="walls"></a-entity>
+
+
+    <!-- Sky -->
+    <a-sky id="sky" color="#0000ff"></a-sky>
+
+  </a-scene>
+
+  <script src="js/map.js"></script>
+  <script src="js/video.js"></script>
+
+</body>
+
+</html>
