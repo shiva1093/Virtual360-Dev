@@ -4,6 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    console.log(path.join(process.env.PWD ));
   res.render('index', { title: 'Express' });
 });
 
