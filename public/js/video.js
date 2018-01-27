@@ -41,7 +41,7 @@ AFRAME.registerComponent('listener', {
             //video.play();
             this.el.getAttribute('position')["z"] = 8;
             this.el.getAttribute('position')["x"] = -8;
-            var url = "/country/";
+            var url = "./country/italy/rome.html";
             window.open(url, '_blank');
 
         }

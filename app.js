@@ -21,9 +21,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//console.log(path.join(__dirname , '/public/country/Italy'));
 
 app.use('/', index);
-app.use('/country', users);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

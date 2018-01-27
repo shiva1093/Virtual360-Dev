@@ -7,9 +7,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
 /*
-router.get('/country/', function (req, res) {
-    res.render('../country/italy/rome');
+router.get('/country/italy', function (req, res) {
+  console.log('one');
+    res.render('rome');
 });
 */
+
 module.exports = router;
