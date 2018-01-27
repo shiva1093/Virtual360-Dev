@@ -39,6 +39,7 @@ AFRAME.registerComponent('listener', {
         if(userPosition <= 7.4 && xPosition <= -10.5 && userPosition >=6.9)
         {
             //video.play();
+            console.log('inside');
             this.el.getAttribute('position')["z"] = 8;
             this.el.getAttribute('position')["x"] = -8;
             var url = "./country/italy/rome.html";

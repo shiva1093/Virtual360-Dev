@@ -7,11 +7,11 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+process.env.PWD = process.cwd()
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(process.env.PWD , 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -20,8 +20,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-//console.log(path.join(__dirname , '/public/country/Italy'));
+app.use(express.static(path.join(process.env.PWD, 'public')));
+console.log(path.join(process.env.PWD ));
 
 app.use('/', index);
 app.use('/users', users);
