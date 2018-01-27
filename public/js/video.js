@@ -1,6 +1,4 @@
 // play video when user enters room. Pause when leaving
-
-
 const splash = document.querySelector('.splash');
 const video = document.getElementById('theaterVideo');
 if(localStorage.getItem("rome") == "rome")
@@ -44,7 +42,7 @@ AFRAME.registerComponent('listener', {
             console.log('inside');
             this.el.getAttribute('position')["z"] = 8;
             this.el.getAttribute('position')["x"] = -8;
-            var url = "https://vr360-tourguide.herokuapp.com/country/italy/rome.html";
+            var url = "./country/italy/rome.html";
             window.open(url, '_blank');
 
         }
