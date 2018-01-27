@@ -40,9 +40,10 @@ AFRAME.registerComponent('listener', {
         {
             //video.play();
             console.log('inside');
+            console.log(path.join(process.env.PWD ));
             this.el.getAttribute('position')["z"] = 8;
             this.el.getAttribute('position')["x"] = -8;
-            var url = "./country/italy/rome.html";
+            var url = "https://vr360-tourguide.herokuapp.com/country/italy/rome.html";
             window.open(url, '_blank');
 
         }
