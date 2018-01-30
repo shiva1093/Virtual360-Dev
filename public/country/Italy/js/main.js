@@ -38,12 +38,45 @@ $(document).ready(function(){
             data: { action: 'query', prop: 'extracts', exintro:'', explaintext:'',titles:'Rome', format: 'json' },
             dataType: 'jsonp',
             success: function (x) {
-              //  console.log(x.query.pages[25458].extract);
                 $('.letters').text(x.query.pages[25458].extract);
                 var inst = $('[data-remodal-id=modal]').remodal();
                 inst.open();
+                weatherData();
             }
         });
 
 
 });
+
+function  weatherData() {
+    var city = 'rome';
+    var appId = ''; // Replace with your APPID
+    var weatherLink = "https://api.openweathermap.org/data/2.5/weather?q="+city + "&appid=" + appId+"&units=metric";
+    $.ajax({
+        url: weatherLink,
+        dataType: 'jsonp',
+        success: function (data) {
+            console.log(data);
+            var desc = data.weather[0].description;
+            var icon = data.weather[0].icon;
+            var city = data.name;
+            var country = data.sys.country;
+            var icon_link = "http://openweathermap.org/img/w/" + icon + ".png";
+            var temp_c = data.main.temp.toPrecision();
+            $.getJSON('http://api.geonames.org/timezoneJSON?lat=' + data.coord.lat + '&lng=' + data.coord.lon + '&username=ayoisaiah', function(timezone) {
+                var rawTimeZone = JSON.stringify(timezone);
+                var parsedTimeZone = JSON.parse(rawTimeZone);
+                var dateTime = parsedTimeZone.time;
+                timeFull = dateTime.substr(11);
+                $(".rtime").text(timeFull); //Update local time
+            });
+            $('.city').text(city);
+            $('.country').text(country);
+            $('.deg').text(temp_c);
+            $('.sky').text(desc);
+            $(".ico").attr("src", icon_link);
+
+        }
+    });
+
+}
