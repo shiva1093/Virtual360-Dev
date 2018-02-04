@@ -90,6 +90,7 @@
     <a-plane src="#Colosseum"  poi class= 'Colosseum clickable' data-poi-type='' rotation="0 110 0" position="-3 2 4"> </a-plane>
     <a-plane src="#Trevi"  poi class= 'Trevi clickable' data-poi-type='' rotation="0 110 0" position="-4.5 1.8 -1"> </a-plane>
     <a-plane src="#Pantheon"  poi class= 'Pantheon clickable' data-poi-type='' rotation="0 110 0" position="-4 2 1.5"> </a-plane>
+    <a-plane src="#Pantheon"  poi class= 'clickable' data-poi-type='360' rotation="0 110 0" position="-4 0 1.5"> </a-plane>
 
     <!-- "button"
     <a-button position="-5 3 2" name="stuff" button-color="#9c9c9c" value="Click me" type="raised"></a-button>-->
@@ -119,9 +120,19 @@
 
     <div data-remodal-id="modal">
         <button data-remodal-action="close" class="remodal-close"></button>
-        <h1>About Rome</h1>
-        <p class="letters">
-        </p>
+        <h1 class="rtitle"></h1>
+        <span style="font-style: italic;" id="tagline"></span><br><br>
+        <span style="font-weight: bold;text-align: left" id="admit">Admission:
+        <span style="font-weight: normal" id="admission"></span></span><br>
+        <span style="font-weight: bold;text-align: left" id="add">Address:
+        <span style="font-weight: normal" id="address"></span></span><br>
+        <span style="font-weight: bold" id="ohours">Opening hours:
+        <span style="font-weight: normal" id="openinghrs"></span></span><br>
+        <span style="font-weight: bold" id="pno">Phone Number:
+        <span style="font-weight: normal" id="pnum"></span></span><br>
+        <span style="font-weight: bold" id="desc">Description:
+        <span style="font-weight: normal" id="description"></span></span>
+
     </div>
 </a-scene>
 

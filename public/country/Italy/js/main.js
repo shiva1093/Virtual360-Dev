@@ -36,10 +36,13 @@ Colosseum.addEventListener('click', function (e) {
 AFRAME.registerComponent('poi', {
     init: function () {
         var el = this.el;
-        console.log(el);
+        //console.log(el);
         el.addEventListener("click", function(evt) {
-            console.log(el);
-            console.log(el.getAttribute('data-poi-type'));
+           // console.log(el);
+           console.log(el.getAttribute('data-poi-type'));
+           if(el.getAttribute('data-poi-type') == '360'){
+                console.log('Play video');
+           }
             placeDetails(el.getAttribute('data-poi-type'));
 
         })
@@ -54,8 +57,6 @@ $(document).ready(function(){
             dataType: 'jsonp',
             success: function (x) {
                 $('.letters').text(x.query.pages[25458].extract);
-                var inst = $('[data-remodal-id=modal]').remodal();
-               // inst.open();
                 pointOfInterest();
                 weatherData();
 
@@ -73,7 +74,7 @@ function  weatherData() {
         url: weatherLink,
         dataType: 'jsonp',
         success: function (data) {
-            console.log(data);
+           // console.log(data);
             var desc = data.weather[0].description;
             var icon = data.weather[0].icon;
             var city = data.name;
@@ -108,7 +109,7 @@ function  pointOfInterest() {
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data.data);
+            //console.log(data.data);
             $(".Colosseum").attr("data-poi-type", data.data.places[0].id);
             $(".Trevi").attr("data-poi-type", data.data.places[1].id);
             $(".Pantheon").attr("data-poi-type", data.data.places[2].id);
@@ -122,6 +123,7 @@ function  pointOfInterest() {
 }
 
 function  placeDetails(placeID) {
+    var inst = $('[data-remodal-id=modal]').remodal();
     $.ajax({
         url: '../php/TravelPlaceDetailsAPI.php',
         type: "POST",
@@ -130,7 +132,22 @@ function  placeDetails(placeID) {
         },
         dataType: 'json',
         success: function (data) {
-            console.log(data.data);
+            //console.log(data.data);
+            //console.log(data.data.place.name);
+            $(".rtitle").text(data.data.place.name);
+           // console.log(data.data.place.perex);
+            $("#tagline").text(data.data.place.perex);
+           // console.log(data.data.place.admission);
+            $("#admission").text(data.data.place.admission);
+           // console.log(data.data.place.address);
+            $("#address").text(data.data.place.address);
+           // console.log(data.data.place.opening_hours);
+            $("#openinghrs").text(data.data.place.opening_hours);
+           // console.log(data.data.place.phone);
+            $("#pnum").text(data.data.place.phone);
+           // console.log(data.data.place.description.text);
+            $("#description").text(data.data.place.description.text);
+            inst.open();
 
         }
     });
