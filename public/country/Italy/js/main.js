@@ -1,11 +1,13 @@
 // play video when user enters room. Pause when leaving
 //$('.ml11').hide();
+
 const rvideo = document.getElementById('video');
 rvideo.pause();
 var fuse = document.querySelector('#fuse-cursor');
 var fuseProgress = document.querySelector('#fuse-progress');
 var scene = document.querySelector('a-scene');
-var entity = scene.querySelector('a-sphere');
+var entity = document.querySelector('a-plane');
+
 // Check browser support
 if (typeof(Storage) !== "undefined") {
 
@@ -21,18 +23,31 @@ fuse.addEventListener('fusing', function (e) {
     fuseProgress.emit('fusing');
 });
 
-/*document.querySelector('#green').addEventListener('click', function (e) {
-    //rvideo.play();
-   //alert( entity.getAttribute('color'));
-    if(entity.getAttribute('color') == '#6fd2f5'){
-        rvideo.play();
-        entity.setAttribute('color','#f3f7fa');
-    }else{
-        rvideo.pause();
-        entity.setAttribute('color','#6fd2f5');
+/*
+Colosseum.addEventListener('click', function (e) {
+    console.clear();
+    console.log(entity.getAttribute('id'));
+    console.log(entity.getAttribute('data-poi-type'));
+
+});
+*/
+
+
+AFRAME.registerComponent('poi', {
+    init: function () {
+        var el = this.el;
+        console.log(el);
+        el.addEventListener("click", function(evt) {
+            console.log(el);
+            console.log(el.getAttribute('data-poi-type'));
+            placeDetails(el.getAttribute('data-poi-type'));
+
+        })
     }
-});*/
+});
+
 $(document).ready(function(){
+
         $.ajax({
             url: 'https://en.wikipedia.org/w/api.php',
             data: { action: 'query', prop: 'extracts', exintro:'', explaintext:'',titles:'Rome', format: 'json' },
@@ -40,8 +55,10 @@ $(document).ready(function(){
             success: function (x) {
                 $('.letters').text(x.query.pages[25458].extract);
                 var inst = $('[data-remodal-id=modal]').remodal();
-                inst.open();
+               // inst.open();
+                pointOfInterest();
                 weatherData();
+
             }
         });
 
@@ -75,6 +92,45 @@ function  weatherData() {
             $('.deg').text(temp_c);
             $('.sky').text(desc);
             $(".ico").attr("src", icon_link);
+
+        }
+    });
+
+}
+
+function  pointOfInterest() {
+    var city = 'city:20';
+    $.ajax({
+        url: '../php/TravelAPI.php',
+        type: "POST",
+        data: {
+            city: city,
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data.data);
+            $(".Colosseum").attr("data-poi-type", data.data.places[0].id);
+            $(".Trevi").attr("data-poi-type", data.data.places[1].id);
+            $(".Pantheon").attr("data-poi-type", data.data.places[2].id);
+            $("#Colosseum").attr("src", data.data.places[0].thumbnail_url);
+            $("#Trevi").attr("src", data.data.places[1].thumbnail_url);
+            $("#Pantheon").attr("src", data.data.places[2].thumbnail_url);
+
+        }
+    });
+
+}
+
+function  placeDetails(placeID) {
+    $.ajax({
+        url: '../php/TravelPlaceDetailsAPI.php',
+        type: "POST",
+        data: {
+            placeID: placeID,
+        },
+        dataType: 'json',
+        success: function (data) {
+            console.log(data.data);
 
         }
     });

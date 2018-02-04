@@ -25,11 +25,24 @@
 
     <a-assets>
        <video id="video" src="./videos/Colosseum_Rome.mp4" autoplay loop crossorigin="anonymous"></video>
-
+        <img id="Colosseum" crossorigin="anonymous" src="">
+        <img id="Trevi" crossorigin="anonymous" src="">
+        <img id="Pantheon" crossorigin="anonymous" src="">
          </a-assets>
     <!-- User / Camera -->
     <!-- Camera + cursor. -->
-
+    <!-- Image link template to be reused.
+    <script id="link" type="text/html">
+        <a-entity class="link"
+                  geometry="primitive: plane; height: 1; width: 1"
+                  material="shader: flat; src: ${thumb}"
+                  event-set__1="_event: mousedown; scale: 1 1 1"
+                  event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                  event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                  event-set__4="_event: mouseleave; scale: 1 1 1"
+                  set-image="on: click; target: #image-360; src: ${src}"
+                  sound="on: click; src: #click-sound"></a-entity>
+    </script>-->
     <a-entity id="annyang" annyang-speech-recognition></a-entity>
     <a-entity id ='target'
               universal-controls
@@ -69,7 +82,14 @@
             <!--</a-entity>-->
             </a-entity>
             </a-camera>
+
+
     </a-entity>
+
+    <!-- Image links. -->
+    <a-plane src="#Colosseum"  poi class= 'Colosseum clickable' data-poi-type='' rotation="0 110 0" position="-3 2 4"> </a-plane>
+    <a-plane src="#Trevi"  poi class= 'Trevi clickable' data-poi-type='' rotation="0 110 0" position="-4.5 1.8 -1"> </a-plane>
+    <a-plane src="#Pantheon"  poi class= 'Pantheon clickable' data-poi-type='' rotation="0 110 0" position="-4 2 1.5"> </a-plane>
 
     <!-- "button"
     <a-button position="-5 3 2" name="stuff" button-color="#9c9c9c" value="Click me" type="raised"></a-button>-->
@@ -79,6 +99,9 @@
             scale="1 1 1" align="center" anchor="center" color="#0d0d0d"
             height="0" letter-spacing="0" line-height="77.00" opacity="0.5" side="double" value="Welcome!! All roads lead to Rome, right?" width="4.80" wrap-count="36" visible="true" animation="delay: 0; dir: normal; dur: 8000; easing: linear; elasticity: 400; loop: 0; property: text.opacity; to: 0; "
             animation__1="delay: 0; dir: normal; dur: 10000; easing: linear; elasticity: 400; loop: 0; property: position; to: -17 5 6; "></a-text>
+
+
+
 
    <div id="weatherdata"  style="z-index: 1; margin-left: 32px; position: absolute">
        <h3 style="color: white"><span class="city"></span>, <span class="country"></span></h3>
