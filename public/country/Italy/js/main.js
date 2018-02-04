@@ -6,15 +6,6 @@ rvideo.pause();
 var fuse = document.querySelector('#fuse-cursor');
 var fuseProgress = document.querySelector('#fuse-progress');
 var scene = document.querySelector('a-scene');
-var entity = document.querySelector('a-plane');
-
-// Check browser support
-if (typeof(Storage) !== "undefined") {
-
-    // Store
-    localStorage.setItem("rome", "rome");
-    // Retrieve
-}
 scene.addEventListener('loaded', function (e) {
     splash.style.display = 'none';
 });
@@ -22,15 +13,6 @@ scene.addEventListener('loaded', function (e) {
 fuse.addEventListener('fusing', function (e) {
     fuseProgress.emit('fusing');
 });
-
-/*
-Colosseum.addEventListener('click', function (e) {
-    console.clear();
-    console.log(entity.getAttribute('id'));
-    console.log(entity.getAttribute('data-poi-type'));
-
-});
-*/
 
 
 AFRAME.registerComponent('poi', {
