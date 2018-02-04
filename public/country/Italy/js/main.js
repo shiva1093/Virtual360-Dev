@@ -32,20 +32,8 @@ AFRAME.registerComponent('poi', {
 });
 
 $(document).ready(function(){
-
-        $.ajax({
-            url: 'https://en.wikipedia.org/w/api.php',
-            data: { action: 'query', prop: 'extracts', exintro:'', explaintext:'',titles:'Rome', format: 'json' },
-            dataType: 'jsonp',
-            success: function (x) {
-                $('.letters').text(x.query.pages[25458].extract);
                 pointOfInterest();
                 weatherData();
-
-            }
-        });
-
-
 });
 
 function  weatherData() {
