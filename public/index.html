@@ -57,6 +57,13 @@
       <img id="italy-rome-sign" src="img/italy/welcome-to-rome.jpg">
       <img id="italy-venice-sign" src="img/italy/welcome-to-venice.jpg">
       <img id="italy-wire-sign" src="img/italy/wire-sign.png">
+      <img id="room-sign-australia1" src="img/australia/australia_room_sign1.jpg">
+      <img id="room-sign-australia" src="img/australia/australia_room_sign.jpg">
+      <img id="welcome_to_melbourne" src="img/australia/australia_melbourne.jpg">
+      <img id="welcome_to_sydney" src="img/australia/australia_sydney.jpg">
+      <img id="france_roomsign" src="img/france/france_roomsign.jpg">
+      <img id="france_roomsign1" src="img/france/france_roomsign1.jpg">
+      <img id="welcome_to_paris" src="img/france/welcome_to_paris.jpg">
 
 
       <!-- Theater 6-->
@@ -99,21 +106,26 @@
     <!-- Room  1(First Left) -->
     <a-entity position="-10.5 1.5 7.5" rotation="0 90 0">
 
-            <a-circle color="#F55" radius="1" height = "1" rotation="-90 0 0" position ="0.3 -1.4 -1">
-              <a-animation attribute="scale" dur="1000" fill="forwards" from = '1 1 1' to="2 2 2" easing= 'ease-in-out-circ' repeat = 'indefinite' direction="alternate-reverse"></a-animation>
-            </a-circle>
+      <a-circle color="#F55" radius="0.8" height = "1" rotation="-90 0 0" position ="2.2 -1.3 0.4">
+        <a-animation attribute="scale" dur="1000" fill="forwards" from = '0.8 0.8 0.8' to="1.5 1.5 1.5" easing= 'ease-in-out-circ'  repeat = 'indefinite' direction="alternate-reverse"></a-animation>
+      </a-circle>
 
+      <a-circle color="#F55" radius="0.8" height = "1" rotation="-90 0 0" position ="-2.2 -1.3 0.4">
+        <a-animation attribute="scale" dur="1000" fill="forwards" from = '0.8 0.8 0.8' to="1.5 1.5 1.5" easing= 'ease-in-out-circ'  repeat = 'indefinite' direction="alternate-reverse"></a-animation>
+      </a-circle>
 
 
       <!-- Room Sign -->
       <a-image position="-1.45 1 6.02" rotation="0 90 0" src="#room-sign-1" height="1.5" width="3"></a-image>
       <a-image position="1.45 1 6.02" rotation="0 -90 0" src="#room-sign-2" height="1.5" width="3"></a-image>
-      <!-- Back wall -->
-      <a-image position="-2 0 -4.4" src="#italy-rome1" height="2.5" width="2.5"></a-image>
-      <a-image position="-2 2.4 -4.4" src="#italy-rome2" height="2.5" width="2.5"></a-image>
-      <a-image position="2 0 -4.4" src="#italy-rome3" height="2.5" width="2.5"></a-image>
-      <a-image position="2 2.4 -4.4" src="#italy-rome4" height="2.5" width="2.5"></a-image>
-      <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#italy-rome-sign" height="2.5" width="5"></a-image>
+      <!--left wall--->
+      <a-entity rotation= "0 90 0">
+        <a-image position="-2 0 -4.4" src="#italy-rome1" height="2.5" width="2.5"></a-image>
+        <a-image position="-2 2.4 -4.4" src="#italy-rome2" height="2.5" width="2.5"></a-image>
+        <a-image position="2 0 -4.4" src="#italy-rome3" height="2.5" width="2.5"></a-image>
+        <a-image position="2 2.4 -4.4" src="#italy-rome4" height="2.5" width="2.5"></a-image>
+        <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#italy-rome-sign" height="2.5" width="5"></a-image>
+      </a-entity>
       <!--right wall -->
       <a-entity rotation= "0 -90 0">
         <a-image position="-2 0 -4.4" src="#italy-venice1" height="2.5" width="2.5"></a-image>
@@ -125,8 +137,73 @@
 
     </a-entity>
 
+      <!------Room 2 (first right)---->
+      <a-entity position="7.5 1.5 7.5" rotation="0 -90 0" >
 
-    <!-- Ground -->
+          <a-circle color="#41d900" radius="1" height = "1" rotation="-90 0 0" position ="2.2 -1.4 0.4" >
+              <a-animation attribute="scale" dur="1000" fill="forwards" from = '0.8 0.8 0.8' to="1.5 1.5 1.5" easing= 'ease-in-out-circ' repeat = 'indefinite' direction="alternate-reverse"></a-animation>
+          </a-circle>
+          <a-circle color="#41d900" radius="1" height = "1" rotation="-90 0 0" position ="-2.2 -1.4 0.4" >
+              <a-animation attribute="scale" dur="1000" fill="forwards" from = '0.8 0.8 0.8' to="1.5 1.5 1.5" easing= 'ease-in-out-circ' repeat = 'indefinite' direction="alternate-reverse"></a-animation>
+          </a-circle>
+
+
+
+          <!-- Room Sign -->
+          <a-image position="-1.45 1 6.02 " rotation="0 90 0" src="#room-sign-australia" height="1.5" width="3"></a-image>
+          <a-image position="1.45 1 6.02" rotation="0 -90 0" src="#room-sign-australia1" height="1.5" width="3"></a-image>
+          <a-entity rotation= "0 -90 0">
+              <a-image position="-2 0 -4.4" src="#italy-venice1" height="2.5" width="2.5"></a-image>
+              <a-image position="-2 2.4 -4.4" src="#italy-venice2" height="2.5" width="2.5"></a-image>
+              <a-image position="2 0 -4.4" src="#italy-venice3" height="2.5" width="2.5"></a-image>
+              <a-image position="2 2.4 -4.4" src="#italy-venice4" height="2.5" width="2.5"></a-image>
+              <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#welcome_to_sydney" height="2.5" width="5"></a-image>
+          </a-entity>
+          <a-entity rotation= "0 90 0">
+              <a-image position="-2 0 -4.4" src="#italy-rome1" height="2.5" width="2.5"></a-image>
+              <a-image position="-2 2.4 -4.4" src="#italy-rome2" height="2.5" width="2.5"></a-image>
+              <a-image position="2 0 -4.4" src="#italy-rome3" height="2.5" width="2.5"></a-image>
+              <a-image position="2 2.4 -4.4" src="#italy-rome4" height="2.5" width="2.5"></a-image>
+              <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#welcome_to_melbourne" height="2.5" width="5"></a-image>
+          </a-entity>
+      </a-entity>
+
+
+      <!------Room 3(second right)---->
+      <a-entity position="7.5 1.5 -4.5" rotation="0 -90 0">
+
+          <a-circle color="#1c45e8" radius="0.8" height = "1" rotation="-90 0 0" position ="2.2 -1.4 0.4">
+              <a-animation attribute="scale" dur="1000" fill="forwards" from = '0.8 0.8 0.8' to="1.5 1.5 1.5" easing= 'ease-in-out-circ' repeat = 'indefinite' direction="alternate-reverse"></a-animation>
+          </a-circle>
+          <a-circle color="#1c45e8" radius="1" height = "1" rotation="-90 0 0" position ="-2.2 -1.4 0.4">
+              <a-animation attribute="scale" dur="1000" fill="forwards" from = '0.8 0.8 0.8' to="1.5 1.5 1.5" easing= 'ease-in-out-circ' repeat = 'indefinite' direction="alternate-reverse"></a-animation>
+          </a-circle>
+
+
+
+          <!-- Room Sign -->
+          <a-image position="-1.45 1 6.02 " rotation="0 90 0" src="#france_roomsign" height="1.5" width="3"></a-image>
+          <a-image position="1.45 1 6.02" rotation="0 -90 0" src="#france_roomsign1" height="1.5" width="3"></a-image>
+          <!--right wall -->
+          <a-entity rotation= "0 -90 0">
+              <a-image position="-2 0 -4.4" src="#italy-venice1" height="2.5" width="2.5"></a-image>
+              <a-image position="-2 2.4 -4.4" src="#italy-venice2" height="2.5" width="2.5"></a-image>
+              <a-image position="2 0 -4.4" src="#italy-venice3" height="2.5" width="2.5"></a-image>
+              <a-image position="2 2.4 -4.4" src="#italy-venice4" height="2.5" width="2.5"></a-image>
+              <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#welcome_to_sydney" height="2.5" width="5"></a-image>
+          </a-entity>
+          <a-entity rotation= "0 90 0">
+              <a-image position="-2 0 -4.4" src="#italy-rome1" height="2.5" width="2.5"></a-image>
+              <a-image position="-2 2.4 -4.4" src="#italy-rome2" height="2.5" width="2.5"></a-image>
+              <a-image position="2 0 -4.4" src="#italy-rome3" height="2.5" width="2.5"></a-image>
+              <a-image position="2 2.4 -4.4" src="#italy-rome4" height="2.5" width="2.5"></a-image>
+              <a-image position="0 5.1 -4.2" rotation="15 0 0" src="#welcome_to_paris" height="2.5" width="5"></a-image>
+          </a-entity>
+
+      </a-entity>
+
+
+      <!-- Ground -->
     <a-grid id="ground" static-body material="src: #floor; repeat: 15 15" rotation="0 -90 0"></a-grid>
 
     <!-- Walls (used by map.js -->
