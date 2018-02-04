@@ -32,12 +32,13 @@ AFRAME.registerComponent('poi', {
 });
 
 $(document).ready(function(){
-                pointOfInterest();
-                weatherData();
+    var cityWeather= $('#cityweather').val();
+    var poiValue= $('#poi').val();
+                pointOfInterest(poiValue);
+                weatherData(cityWeather);
 });
 
-function  weatherData() {
-    var city = 'rome';
+function  weatherData(city) {
     var appId = ''; // Replace with your APPID
     var weatherLink = "https://api.openweathermap.org/data/2.5/weather?q="+city + "&appid=" + appId+"&units=metric";
     $.ajax({
@@ -69,13 +70,12 @@ function  weatherData() {
 
 }
 
-function  pointOfInterest() {
-    var city = 'city:20';
+function  pointOfInterest(poiValue) {
     $.ajax({
         url: '../php/TravelAPI.php',
         type: "POST",
         data: {
-            city: city,
+            city: poiValue,
         },
         dataType: 'json',
         success: function (data) {
