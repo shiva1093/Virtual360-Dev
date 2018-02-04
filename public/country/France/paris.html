@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Paris</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/anime.css">
+    <link rel="stylesheet" href="../js/Remodal-1.1.1/dist/remodal.css">
+    <link rel="stylesheet" href="../js/Remodal-1.1.1/dist/remodal-default-theme.css">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+    <script src="../js/build.js"></script>
+    <script src="../js/aframe-animation-component.min.js"></script>
+    <script src="../js/speech.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<div id="splash">
+    <div class="floading"></div>
+</div>
+<a-scene>
+
+    <a-assets>
+       <video id="video" src="../videos/Colosseum_Rome.mp4" autoplay loop crossorigin="anonymous"></video>
+        <img id="Colosseum" crossorigin="anonymous" src="">
+        <img id="Trevi" crossorigin="anonymous" src="">
+        <img id="Pantheon" crossorigin="anonymous" src="">
+         </a-assets>
+    <a-entity id="annyang" annyang-speech-recognition></a-entity>
+    <a-entity id ='target'
+              universal-controls
+              listener  rotation="0 470 0"
+              animation__1="delay: 0; dir: normal; dur: 2000; easing: easeInOutQuad; elasticity: 400; loop: 0; property: position; startEvents: green-clicked; to: 1.3 5.8 -0.2; "
+              teleporter="character: #character; marker: #teleportMarker"
+              speech-command__start="command: start; type: function; targetElement: #target; targetComponent: teleporter; function: start; keyCode: 32"
+              speech-command__stop="command: stop; type: function; targetElement: #target; targetComponent: teleporter; function: stop; keyCode: 13"
+              speech-command__home="command: go home; type: function; targetElement: #target; targetComponent: teleporter; function: home; keyCode: 26"
+
+    >
+
+        <a-camera id="main-camera" user-height="1" visible="true"
+                  cursor="rayOrigin: mouse;" raycaster="objects: .clickable">
+        <a-cursor id="fuse-cursor" fuse="true" geometry="radiusInner: 0.02; radiusOuter: 0.03; thetaLength: 360; thetaStart: 90;"
+                  color="#232323" opacity="1" repeat="1 1" shader="flat" position="0 0 -1" objects=".clickable"
+                  rotation="0 0 0" scale="1 1 1" visible="true"></a-cursor>
+
+        <a-ring id="fuse-progress" radius-inner="0.02" radius-outer="0.03" theta-length="360"
+                theta-start="90" color="#f5fcff" opacity="0" repeat="1 1" shader="flat" position="0 0 -0.999"
+                rotation="0 0 0" scale="1 1 1" visible="true" class="clickable" animation="delay: 0; dir: normal; dur: 1500; easing: linear; loop: 0; property: geometry.thetaLength; startEvents: fusing; to: 0; from: 360;"
+                animation__1="delay: 0; dir: normal; dur: 500; easing: linear; loop: 0; property: opacity; startEvents: fusing; to: 1; from: 0;"></a-ring>
+            <a-entity  geometry="primitive: plane; radius:400"
+                       material="side: double; color: #EF2D5E; transparent: true; opacity: 0.2"
+                       position="-1 -0.3 -1" >
+            <a-entity text="value: Say 'START' to start the video; color: white; width: 2.5;" position="-1.3 -0.3 -1.5" ></a-entity>
+                <a-entity text="value: Say 'STOP' to stop the video; color: white; width: 2.5;" position="-1.3 -0.5 -1.5" >
+            </a-entity>
+            </a-entity>
+            </a-camera>
+
+
+    </a-entity>
+
+    <!-- Image links. -->
+    <a-plane src="#Colosseum"  poi class= 'Colosseum clickable' data-poi-type='' rotation="0 110 0" position="-3 2 4"> </a-plane>
+    <a-plane src="#Trevi"  poi class= 'Trevi clickable' data-poi-type='' rotation="0 110 0" position="-4.5 1.8 -1"> </a-plane>
+    <a-plane src="#Pantheon"  poi class= 'Pantheon clickable' data-poi-type='' rotation="0 110 0" position="-4 2 1.5"> </a-plane>
+    <a-plane src="#Pantheon"  poi class= 'clickable' data-poi-type='360' rotation="0 110 0" position="-4 0 1.5"> </a-plane>
+    <input type="hidden" id="cityweather" value="paris">
+    <input type="hidden" id="poi" value="city:14">
+
+         <a-videosphere id="rome" src="#video"></a-videosphere>
+
+    <a-text id="text"  rotation="0 470 0"
+            scale="1 1 1" align="center" anchor="center" color="#0d0d0d"
+            height="0" letter-spacing="0" line-height="77.00" opacity="0.5" side="double" value="Welcome to Paris" width="4.80" wrap-count="36" visible="true" animation="delay: 0; dir: normal; dur: 8000; easing: linear; elasticity: 400; loop: 0; property: text.opacity; to: 0; "
+            animation__1="delay: 0; dir: normal; dur: 10000; easing: linear; elasticity: 400; loop: 0; property: position; to: -17 5 6; "></a-text>
+
+
+
+
+   <div id="weatherdata"  style="z-index: 1; margin-left: 32px; position: absolute">
+       <h3 style="color: white"><span class="city"></span>, <span class="country"></span></h3>
+       <h3 style="color: white"><span class="deg"></span> °<span class="temp">C</span></h3>
+       <h3 style="color: white"> <span class="sky"></span>
+           <span> <img class="ico" style="display: block" src=""></span></h3>
+       <h3 style="position: absolute;margin-top: -24px;color: white"><span class="rtime"></span></h3>
+
+   </div>
+
+
+    <div data-remodal-id="modal">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <h1 class="rtitle"></h1>
+        <span style="font-style: italic;" id="tagline"></span><br><br>
+        <span style="font-weight: bold;text-align: left" id="admit">Admission:
+        <span style="font-weight: normal" id="admission"></span></span><br>
+        <span style="font-weight: bold;text-align: left" id="add">Address:
+        <span style="font-weight: normal" id="address"></span></span><br>
+        <span style="font-weight: bold" id="ohours">Opening hours:
+        <span style="font-weight: normal" id="openinghrs"></span></span><br>
+        <span style="font-weight: bold" id="pno">Phone Number:
+        <span style="font-weight: normal" id="pnum"></span></span><br>
+        <span style="font-weight: bold" id="desc">Description:
+        <span style="font-weight: normal" id="description"></span></span>
+
+    </div>
+</a-scene>
+
+<script src="../js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script src="../js/anime.js"></script>
+<script src="../js/Remodal-1.1.1/dist/remodal.min.js"></script>
+ </body>
+ </html>
