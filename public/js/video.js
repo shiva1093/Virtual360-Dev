@@ -1,13 +1,6 @@
 // play video when user enters room. Pause when leaving
 const splash = document.querySelector('.splash');
 const video = document.getElementById('theaterVideo');
-if(localStorage.getItem("rome") == "rome")
-{
-    localStorage.removeItem("rome");
-    splash.style.display = 'none';
-    video.pause();
-}
-
 video.play();
 AFRAME.registerComponent('listener', {
     tick: function () {
