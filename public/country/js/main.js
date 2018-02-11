@@ -23,7 +23,10 @@ AFRAME.registerComponent('poi', {
            // console.log(el);
            console.log(el.getAttribute('data-poi-type'));
            if(el.getAttribute('data-poi-type') == '360'){
+               var videoURL= $('#video360').val();
                 console.log('Play video');
+               var url = "./"+videoURL+".html";
+               window.open(url, '_blank');
            }
             placeDetails(el.getAttribute('data-poi-type'));
 
@@ -56,7 +59,7 @@ function  weatherData(city) {
                 var rawTimeZone = JSON.stringify(timezone);
                 var parsedTimeZone = JSON.parse(rawTimeZone);
                 var dateTime = parsedTimeZone.time;
-                timeFull = dateTime.substr(11);
+                var timeFull = dateTime.substr(11);
                 $(".rtime").text(timeFull); //Update local time
             });
             $('.city').text(city);
