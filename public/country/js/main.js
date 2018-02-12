@@ -23,6 +23,7 @@ AFRAME.registerComponent('poi', {
            // console.log(el);
            console.log(el.getAttribute('data-poi-type'));
            if(el.getAttribute('data-poi-type') == '360'){
+               rvideo.pause();
                var videoURL= $('#video360').val();
                 console.log('Play video');
                var url = "./"+videoURL+".html";
