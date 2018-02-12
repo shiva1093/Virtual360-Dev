@@ -43,7 +43,7 @@ $(document).ready(function(){
 });
 
 function  weatherData(city) {
-    var appId = ''; // Replace with your APPID
+    var appId = '76db767f210d9bb201ee704f13c005c4'; // Replace with your APPID
     var weatherLink = "https://api.openweathermap.org/data/2.5/weather?q="+city + "&appid=" + appId+"&units=metric";
     $.ajax({
         url: weatherLink,
