@@ -11,6 +11,8 @@ START/STOP user can play the 360 degree video which is the background of the eac
 
 You can access the application by this URL: https://360-tourguide.herokuapp.com
 
+You can watch the video of how the application works by using this link: https://www.youtube.com/watch?v=QVfPqELR_O8&feature=youtu.be
+
 NOTE: Since we use NodeJS server in heroku, the PHP code doesn't work since you need a apache server to run the PHP code.
 
 But when you deploy the code with the necessary setting(your API Key) the application will work as I mentioned.
