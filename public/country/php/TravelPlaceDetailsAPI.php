@@ -7,7 +7,7 @@
  */
 
 $placeID = $_POST['placeID'];
-$appId = ''; // Replace with your APPID
+$appId = 'pN9dtdmhQb53LK5qwwFSh6ZolDenM7zyapufX4ON'; // Replace with your APPID
 $travelLink = "https://api.sygictravelapi.com/1.0/en/places/".$placeID;
 $ch = curl_init();
 // Disable SSL verification
